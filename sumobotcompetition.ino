@@ -20,7 +20,7 @@ void setup()
 {
 //Serial.begin(9600);
 delay(5000);
-//servo.attach(3); //check which pin it is connected on
+servo.attach(3); 
 pinMode(motorPin1F, OUTPUT);
 pinMode(motorPin1R,OUTPUT);
 pinMode(motorPin2F, OUTPUT);
@@ -32,10 +32,10 @@ digitalWrite(motorPin1F, LOW);
 digitalWrite(motorPin2F, LOW);
 digitalWrite(motorPin2R, LOW);
 digitalWrite(motorPin2R, LOW);
+servo.write(0);
+delay(500);
 minLight1 = analogRead(photoCellPin1) - 200;
 minLight2 = analogRead(photoCellPin2) - 100;
-
-//servo.write(45); //Confirm this lifts up spike, and lowers ramp
 
 }
 
@@ -77,7 +77,7 @@ boolean somethingThere()
 {
  float x = irBot();
  long y = sonarBot();
-  if (((x > 1.40 && x < 1.32) || (y <= 77 && y >= 3)))
+  if (((x > 1.40 && x < 1.32) || (y <= 50 && y >= 3)))
   {
     return true;
   }
@@ -102,13 +102,11 @@ digitalWrite(motorPin2F, LOW);
 //---------------------Discrete Move Functions---------------------------------//** CALLIBRATE SERVO**
 void turn30CCW()
 {
-//servo.write(0);
-//digitalWrite(motorPin1R,HIGH);
+servo.write(40);
 digitalWrite(motorPin2F,HIGH);
 delay(1000);
-//digitalWrite(motorPin1R,LOW);
 digitalWrite(motorPin2F,LOW);
-//servo.write(45);
+servo.write(0);
 }
 
 void turn30CW()
@@ -123,11 +121,11 @@ digitalWrite(motorPin2R,LOW);
 
 void turn180CCW()
 {
-//servo.write(0);
+servo.write(40);
 digitalWrite(motorPin1R,HIGH);
 delay(7000);
 digitalWrite(motorPin1R,LOW);
-//servo.write(45);
+servo.write(0);
 }
 
 void turn180CW()
@@ -143,13 +141,13 @@ servo.write(45);
 void reverse()
 {
   if(noLineBack()){
- // servo.write(0);
+  servo.write(40);
   digitalWrite(motorPin1R,HIGH);
   digitalWrite(motorPin2R,HIGH);
   delay(2000);
   digitalWrite(motorPin1R,LOW);
   digitalWrite(motorPin2R,LOW);
- // servo.write(45);
+  servo.write(0);
   }
 }
 
