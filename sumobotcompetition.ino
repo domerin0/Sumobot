@@ -99,7 +99,7 @@ digitalWrite(motorPin1F, LOW);
 digitalWrite(motorPin2F, LOW); 
 }
 
-//---------------------Discrete Move Functions---------------------------------//** CALLIBRATE SERVO**
+//---------------------Discrete Move Functions---------------------------------//
 void turn30CCW()
 {
 servo.write(40);
@@ -111,11 +111,11 @@ servo.write(0);
 
 void turn30CW()
 {
- // servo.write(0);
+servo.write(40);
 digitalWrite(motorPin2R,HIGH);
 delay(750);
 digitalWrite(motorPin2R,LOW);
-//servo.write(45);
+servo.write(0);
 }
 
 
@@ -130,11 +130,11 @@ servo.write(0);
 
 void turn180CW()
 {
-  servo.write(0);
+  servo.write(40);
 digitalWrite(motorPin2R,HIGH);
 delay(2000);
 digitalWrite(motorPin2R,LOW);
-servo.write(45);
+servo.write(0);
 }
 
 
@@ -159,7 +159,7 @@ void foreward()
   digitalWrite(motorPin1F,LOW);
   digitalWrite(motorPin2F,LOW);
 }
-//----------------------Looks for the line and other sumobot------------------------------------------// **CALLIBRATE IR AND SONAR SENSORS**
+//----------------------Looks for the line and other sumobot------------------------------------------//
 boolean noLineFront()
 {
 int lightLevel1=analogRead(photoCellPin1);
@@ -196,7 +196,7 @@ long sonarBot()
 
 float irBot()
 {
-  return analogRead(irSensorPin)*(5.0/1023.0); //Need to callibrate
+  return analogRead(irSensorPin)*(5.0/1023.0); //converts to voltage reading
 }
 //--------------------To convert the echo to distance measurements------------------------------------//
 
